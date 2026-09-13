@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Negocios — Diario El Faro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="notification is-warning mb-0 aviso-superior">
+    <div class="container">
+      <div class="level is-mobile">
+        <div class="level-left">
+          <span class="icon-text">
+            <span class="icon"><i class="fa-solid fa-bullhorn"></i></span>
+            <span><strong>Aviso:</strong> Edición especial de aniversario disponible este fin de semana.</span>
+          </span>
+        </div>
+        <div class="level-right">
+          <span class="icon-text reloj">
+            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+            <time id="fecha-hora" datetime="2026-01-01T00:00:00" aria-live="polite">Cargando hora...</time>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar is-dark" role="navigation" aria-label="menú principal">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="media/logo-faro.svg" alt="Logotipo El Faro" width="32" height="32">
+          <span class="title is-4 has-text-white mb-0 ml-2">El Faro</span>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="menuPrincipal">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="menuPrincipal" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">Inicio</a>
+          <a class="navbar-item" href="deporte.html">Deporte</a>
+          <a class="navbar-item is-active" href="negocios.html">Negocios</a>
+          <a class="navbar-item" href="contacto.html">Contacto</a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Secciones</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="deporte.html">Deporte</a>
+              <a class="navbar-item" href="negocios.html">Negocios</a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="contacto.html">Envíanos tu noticia</a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field has-addons">
+              <div class="control has-icons-left">
+                <input class="input is-small is-rounded" type="text" placeholder="Buscar..." aria-label="Buscar en el sitio">
+                <span class="icon is-small is-left"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="ruta de navegación">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Negocios</a></li>
+        </ul>
+      </nav>
+
+      <h1 class="title is-3">Negocios</h1>
+
+      <!-- Formulario de publicación de artículo (accesible) -->
+      <div class="box mb-5">
+        <h2 class="title is-5">Publicar un artículo</h2>
+        <form id="form-articulo" novalidate>
+          <div id="mensaje-articulo" class="notification is-hidden mb-4"></div>
+          <div class="columns is-vcentered">
+            <div class="column is-6">
+              <div class="field">
+                <label class="label" for="articulo-titulo">Título</label>
+                <div class="control">
+                  <input class="input" type="text" id="articulo-titulo" name="titulo"
+                         placeholder="Título del artículo" aria-describedby="ayuda-articulo-titulo" required>
+                </div>
+                <p class="help is-danger is-hidden" id="ayuda-articulo-titulo"></p>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="field">
+                <label class="label" for="articulo-categoria">Categoría</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="articulo-categoria" name="categoria">
+                      <option>Negocios</option>
+                      <option>Emprendimiento</option>
+                      <option>Comercio</option>
+                      <option>Tecnología</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-2">
+              <div class="field">
+                <label class="label is-hidden-mobile">&nbsp;</label>
+                <div class="control">
+                  <button class="button is-primary is-fullwidth" type="submit">Publicar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="level is-mobile mb-3">
+        <div class="level-left">
+          <h2 class="title is-5 mb-0">Artículos de Negocios</h2>
+        </div>
+        <div class="level-right">
+          <span class="tag is-info is-light contador-seccion" data-contador="negocios" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="columns is-multiline" id="grilla-articulos" data-seccion="negocios">
+        <div class="column is-one-quarter">
+          <div class="card card-articulo">
+            <div class="card-image"><figure class="image is-4by3"><img src="img/nota3.jpg" alt="App reciclaje"></figure></div>
+            <div class="card-content"><span class="tag is-success is-light mb-2">Emprendimiento</span><p class="title is-6">Emprendedores locales crean app para reciclaje</p></div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="card card-articulo">
+            <div class="card-image"><figure class="image is-4by3"><img src="img/nota6.jpg" alt="Feria pymes"></figure></div>
+            <div class="card-content"><span class="tag is-success is-light mb-2">Comercio</span><p class="title is-6">Feria de emprendimiento reúne a pymes de la región</p></div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="card card-articulo">
+            <div class="card-image"><figure class="image is-4by3"><img src="img/nota2.jpg" alt="Comercio local"></figure></div>
+            <div class="card-content"><span class="tag is-success is-light mb-2">Comercio</span><p class="title is-6">Comercio del centro proyecta un verano con más ventas</p></div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="card card-articulo">
+            <div class="card-image"><figure class="image is-4by3"><img src="img/nota4.jpg" alt="Tecnología"></figure></div>
+            <div class="card-content"><span class="tag is-success is-light mb-2">Tecnología</span><p class="title is-6">Startups regionales buscan financiamiento en ronda local</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer footer-grande has-background-dark has-text-white">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4">
+          <p class="title is-4 has-text-white">
+            <img src="media/logo-faro.svg" alt="" width="28" height="28" class="mr-2" style="vertical-align:middle">
+            El Faro
+          </p>
+          <p>Diario digital de Viña del Mar. Información local, regional y nacional con foco en la comunidad.</p>
+        </div>
+        <div class="column is-2">
+          <p class="title is-6 has-text-white">Secciones</p>
+          <ul>
+            <li><a class="has-text-grey-light" href="deporte.html">Deporte</a></li>
+            <li><a class="has-text-grey-light" href="negocios.html">Negocios</a></li>
+            <li><a class="has-text-grey-light" href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="column is-2">
+          <p class="title is-6 has-text-white">Institucional</p>
+          <ul>
+            <li><a class="has-text-grey-light" href="#">Quiénes somos</a></li>
+            <li><a class="has-text-grey-light" href="#">Política de cookies</a></li>
+            <li><a class="has-text-grey-light" href="#">Avisos legales</a></li>
+          </ul>
+        </div>
+        <div class="column is-4">
+          <p class="title is-6 has-text-white">Síguenos</p>
+          <div class="buttons">
+            <a class="button is-dark is-outlined" href="#" aria-label="Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></a>
+            <a class="button is-dark is-outlined" href="#" aria-label="Instagram"><span class="icon"><i class="fa-brands fa-instagram"></i></span></a>
+            <a class="button is-dark is-outlined" href="#" aria-label="X"><span class="icon"><i class="fa-brands fa-x-twitter"></i></span></a>
+          </div>
+        </div>
+      </div>
+      <hr class="has-background-grey">
+      <div class="has-text-centered"><p>&copy; 2026 Diario El Faro · Viña del Mar, Chile. Todos los derechos reservados.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/faro.js"></script>
+</body>
+</html>

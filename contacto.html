@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto — Diario El Faro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="notification is-warning mb-0 aviso-superior">
+    <div class="container">
+      <div class="level is-mobile">
+        <div class="level-left">
+          <span class="icon-text">
+            <span class="icon"><i class="fa-solid fa-bullhorn"></i></span>
+            <span><strong>Aviso:</strong> Edición especial de aniversario disponible este fin de semana.</span>
+          </span>
+        </div>
+        <div class="level-right">
+          <span class="icon-text reloj">
+            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+            <time id="fecha-hora" datetime="2026-01-01T00:00:00" aria-live="polite">Cargando hora...</time>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar is-dark" role="navigation" aria-label="menú principal">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="media/logo-faro.svg" alt="Logotipo El Faro" width="32" height="32">
+          <span class="title is-4 has-text-white mb-0 ml-2">El Faro</span>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="menuPrincipal">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="menuPrincipal" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">Inicio</a>
+          <a class="navbar-item" href="deporte.html">Deporte</a>
+          <a class="navbar-item" href="negocios.html">Negocios</a>
+          <a class="navbar-item is-active" href="contacto.html">Contacto</a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Secciones</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="deporte.html">Deporte</a>
+              <a class="navbar-item" href="negocios.html">Negocios</a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="contacto.html">Envíanos tu noticia</a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field has-addons">
+              <div class="control has-icons-left">
+                <input class="input is-small is-rounded" type="text" placeholder="Buscar..." aria-label="Buscar en el sitio">
+                <span class="icon is-small is-left"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="ruta de navegación">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <h1 class="title is-3">Contacto</h1>
+      <p class="subtitle is-5">¿Tienes una noticia o comentario? Escríbenos.</p>
+
+      <div class="columns">
+        <div class="column is-7">
+          <div class="box">
+            <form id="form-contacto" novalidate>
+              <div id="mensaje-contacto" class="notification is-hidden mb-4"></div>
+
+              <div class="field">
+                <label class="label" for="contacto-nombre">Nombre</label>
+                <div class="control has-icons-left">
+                  <input class="input" type="text" id="contacto-nombre" name="nombre"
+                         placeholder="Tu nombre" aria-describedby="ayuda-contacto-nombre" required>
+                  <span class="icon is-small is-left"><i class="fa-solid fa-user"></i></span>
+                </div>
+                <p class="help is-danger is-hidden" id="ayuda-contacto-nombre"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="contacto-correo">Correo electrónico</label>
+                <div class="control has-icons-left">
+                  <input class="input" type="email" id="contacto-correo" name="correo"
+                         placeholder="tucorreo@ejemplo.cl" aria-describedby="ayuda-contacto-correo" required>
+                  <span class="icon is-small is-left"><i class="fa-solid fa-envelope"></i></span>
+                </div>
+                <p class="help is-danger is-hidden" id="ayuda-contacto-correo"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="contacto-asunto">Asunto</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="contacto-asunto" name="asunto">
+                      <option>Enviar una noticia</option>
+                      <option>Comentario</option>
+                      <option>Publicidad</option>
+                      <option>Otro</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="contacto-mensaje">Mensaje</label>
+                <div class="control">
+                  <textarea class="textarea" id="contacto-mensaje" name="mensaje"
+                            placeholder="Escribe tu mensaje..." aria-describedby="ayuda-contacto-mensaje" required></textarea>
+                </div>
+                <p class="help is-danger is-hidden" id="ayuda-contacto-mensaje"></p>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button class="button is-primary" type="submit">Enviar mensaje</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="column is-5">
+          <div class="box">
+            <p class="title is-5">Datos de contacto</p>
+            <p class="mb-3"><span class="icon-text"><span class="icon has-text-primary"><i class="fa-solid fa-location-dot"></i></span><span>24 Norte, Viña del Mar, Chile</span></span></p>
+            <p class="mb-3"><span class="icon-text"><span class="icon has-text-primary"><i class="fa-solid fa-phone"></i></span><span>+56 32 000 0000</span></span></p>
+            <p class="mb-3"><span class="icon-text"><span class="icon has-text-primary"><i class="fa-solid fa-envelope"></i></span><span>contacto@elfaro.cl</span></span></p>
+            <p><span class="icon-text"><span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span><span>Lunes a viernes, 9:00 a 18:00</span></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer footer-grande has-background-dark has-text-white">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4">
+          <p class="title is-4 has-text-white">
+            <img src="media/logo-faro.svg" alt="" width="28" height="28" class="mr-2" style="vertical-align:middle">
+            El Faro
+          </p>
+          <p>Diario digital de Viña del Mar. Información local, regional y nacional con foco en la comunidad.</p>
+        </div>
+        <div class="column is-2">
+          <p class="title is-6 has-text-white">Secciones</p>
+          <ul>
+            <li><a class="has-text-grey-light" href="deporte.html">Deporte</a></li>
+            <li><a class="has-text-grey-light" href="negocios.html">Negocios</a></li>
+            <li><a class="has-text-grey-light" href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="column is-2">
+          <p class="title is-6 has-text-white">Institucional</p>
+          <ul>
+            <li><a class="has-text-grey-light" href="#">Quiénes somos</a></li>
+            <li><a class="has-text-grey-light" href="#">Política de cookies</a></li>
+            <li><a class="has-text-grey-light" href="#">Avisos legales</a></li>
+          </ul>
+        </div>
+        <div class="column is-4">
+          <p class="title is-6 has-text-white">Síguenos</p>
+          <div class="buttons">
+            <a class="button is-dark is-outlined" href="#" aria-label="Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></a>
+            <a class="button is-dark is-outlined" href="#" aria-label="Instagram"><span class="icon"><i class="fa-brands fa-instagram"></i></span></a>
+            <a class="button is-dark is-outlined" href="#" aria-label="X"><span class="icon"><i class="fa-brands fa-x-twitter"></i></span></a>
+          </div>
+        </div>
+      </div>
+      <hr class="has-background-grey">
+      <div class="has-text-centered"><p>&copy; 2026 Diario El Faro · Viña del Mar, Chile. Todos los derechos reservados.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/faro.js"></script>
+</body>
+</html>
